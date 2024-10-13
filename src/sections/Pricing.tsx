@@ -62,21 +62,14 @@ export const Pricing = () => {
         <div className="section-heading">
           <h2 className="section-title">Pricing</h2>
           <p className="section-description mt-5">
-            Free forever. Upgrade for unlimited tasks, better security, &
-            exclusive features.
+            Free forever. Upgrade for unlimited tasks, better security, & exclusive features.
           </p>
         </div>
         <div className="flex flex-col gap-6 items-center mt-10 lg:flex-row lg:items-end lg:justify-center">
           {pricingTiers.map(
-            ({
-              title,
-              monthlyPrice,
-              buttonText,
-              popular,
-              inverse,
-              features,
-            }) => (
+            ({ title, monthlyPrice, buttonText, popular, inverse, features }, index) => (
               <div
+                key={index}
                 className={twMerge(
                   "card",
                   inverse === true && "border-black bg-black text-white"
@@ -103,7 +96,7 @@ export const Pricing = () => {
                           ease: "linear",
                           repeatType: "loop",
                         }}
-                        className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] [background-size:200%] text-transparent bg-clip-text font-medium"
+                        className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] [background-size:200%] text-transparent bg-clip-text font-medium"
                       >
                         Popular
                       </motion.span>
@@ -127,8 +120,8 @@ export const Pricing = () => {
                   {buttonText}
                 </button>
                 <ul className="flex flex-col gap-5 mt-8">
-                  {features.map((feature) => (
-                    <li className="text-sm flex items-center gap-4">
+                  {features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="text-sm flex items-center gap-4">
                       <CheckIcon className="h-6 w-6" />
                       <span>{feature}</span>
                     </li>
